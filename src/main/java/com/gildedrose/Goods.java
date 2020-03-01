@@ -2,16 +2,28 @@ package com.gildedrose;
 
 public class Goods {
 
-    public String name;
+    private final String name;
 
-    public int sell_in;
+    private int sell_in;
 
-    public int quality;
+    private int quality;
 
     public Goods(String name, int sell_in, int quality) {
         this.name = name;
         this.sell_in = sell_in;
         this.quality = quality;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getSellIn() {
+        return this.sell_in;
+    }
+
+    public int getQuality() {
+        return this.quality;
     }
 
     @Override
@@ -20,8 +32,7 @@ public class Goods {
     }
 
     public void updateInfo() {
-        if (!this.name.equals("Aged Brie")
-                && !this.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+        if (!this.name.equals("Aged Brie") && !this.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (this.quality > 0) {
                 if (!this.name.equals("Sulfuras, Hand of Ragnaros")) {
                     this.quality = this.quality - 1;

@@ -12,9 +12,9 @@ public class GildedRoseTest {
         Goods[] items = new Goods[] { new Goods("foo", 1, 5) };
         GildedRose app = new GildedRose(items);
         app.updateGoodsInfos();
-        assertEquals("foo", app.goodsItems[0].name);
-        assertThat(app.goodsItems[0].quality, is(4));
-        assertThat(app.goodsItems[0].sell_in, is(0));
+        assertEquals("foo", app.goodsItems[0].getName());
+        assertThat(app.goodsItems[0].getQuality(), is(4));
+        assertThat(app.goodsItems[0].getSellIn(), is(0));
     }
 
 }
