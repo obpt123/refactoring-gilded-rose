@@ -44,7 +44,6 @@ public class Goods {
     }
 
     private void updateSulfurasInfo() {
-
     }
 
     private void updateAgedBrieInfo() {
@@ -52,9 +51,7 @@ public class Goods {
             this.quality = this.quality + 1;
         }
         this.sell_in = this.sell_in - 1;
-        if (this.sell_in >= 0)
-            return;
-        if (this.quality < 50) {
+        if (this.sell_in < 0 && this.quality < 50) {
             this.quality = this.quality + 1;
         }
     }
@@ -73,9 +70,9 @@ public class Goods {
 
         }
         this.sell_in = this.sell_in - 1;
-        if (this.sell_in >= 0)
-            return;
-        this.quality = 0;
+        if (this.sell_in < 0) {
+            this.quality = 0;
+        }
     }
 
     private void updateOthers() {
@@ -83,13 +80,11 @@ public class Goods {
             this.quality = this.quality - 1;
         }
         this.sell_in = this.sell_in - 1;
-        if (this.sell_in >= 0)
-            return;
-        if (this.quality > 0) {
+        if (this.sell_in < 0 && this.quality > 0) {
             this.quality = this.quality - 1;
         }
     }
-    
+
     private boolean isAgedBrie() {
         return this.name.equals("Aged Brie");
     }
@@ -101,5 +96,5 @@ public class Goods {
     private boolean isSulfuras() {
         return this.name.equals("Sulfuras, Hand of Ragnaros");
     }
-   
+
 }
