@@ -36,7 +36,8 @@ public class Goods {
         decreaseSellIn();
         reUpdateQualityWhenSellInLessThanZero();
     }
-    private void updateQuality(){
+
+    private void updateQuality() {
         if (!this.name.equals("Aged Brie") && !this.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (this.quality > 0) {
                 if (!this.name.equals("Sulfuras, Hand of Ragnaros")) {
@@ -63,23 +64,25 @@ public class Goods {
             }
         }
     }
+
     private void decreaseSellIn() {
         if (!this.name.equals("Sulfuras, Hand of Ragnaros")) {
             this.sell_in = this.sell_in - 1;
         }
     }
+
     private void reUpdateQualityWhenSellInLessThanZero() {
         if (this.sell_in >= 0)
             return;
         if (!this.name.equals("Aged Brie")) {
             if (!this.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (this.quality > 0) {
-                    if (!this.name.equals("Sulfuras, Hand of Ragnaros")) {
+                if (!this.name.equals("Sulfuras, Hand of Ragnaros")) {
+                    if (this.quality > 0) {
                         this.quality = this.quality - 1;
                     }
                 }
             } else {
-                this.quality = this.quality - this.quality;
+                this.quality = 0;
             }
         } else {
             if (this.quality < 50) {
