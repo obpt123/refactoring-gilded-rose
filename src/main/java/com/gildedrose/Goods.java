@@ -32,17 +32,24 @@ public class Goods {
     }
 
     public void updateInfo() {
-        updateQuality();
-        decreaseSellIn();
-        reUpdateQualityWhenSellInLessThanZero();
+        if (isSulfuras()) {
+            updateSulfurasInfo();
+        } else {
+            updateQuality();
+            decreaseSellIn();
+            reUpdateQualityWhenSellInLessThanZero();
+        }
+
+    }
+
+    public void updateSulfurasInfo() {
+
     }
 
     private void updateQuality() {
         if (!isAgedBrie() && !isBackstage()) {
             if (this.quality > 0) {
-                if (!isSulfuras()) {
-                    this.quality = this.quality - 1;
-                }
+                this.quality = this.quality - 1;
             }
         } else {
             if (this.quality < 50) {
@@ -62,9 +69,7 @@ public class Goods {
     }
 
     private void decreaseSellIn() {
-        if (!isSulfuras()) {
-            this.sell_in = this.sell_in - 1;
-        }
+        this.sell_in = this.sell_in - 1;
     }
 
     private boolean isAgedBrie() {
@@ -84,10 +89,8 @@ public class Goods {
             return;
         if (!isAgedBrie()) {
             if (!isBackstage()) {
-                if (!isSulfuras()) {
-                    if (this.quality > 0) {
-                        this.quality = this.quality - 1;
-                    }
+                if (this.quality > 0) {
+                    this.quality = this.quality - 1;
                 }
             } else {
                 this.quality = 0;
