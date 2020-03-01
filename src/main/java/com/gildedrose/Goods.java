@@ -39,11 +39,8 @@ public class Goods {
         } else if (isBackstage()) {
             updateBackstageInfo();
         } else {
-            updateQuality();
-            decreaseSellIn();
-            reUpdateQualityWhenSellInLessThanZero();
+            updateOthers();
         }
-
     }
 
     private void updateSulfurasInfo() {
@@ -79,6 +76,12 @@ public class Goods {
         if (this.sell_in >= 0)
             return;
         this.quality = 0;
+    }
+
+    private void updateOthers() {
+        updateQuality();
+        decreaseSellIn();
+        reUpdateQualityWhenSellInLessThanZero();
     }
 
     private void updateQuality() {
