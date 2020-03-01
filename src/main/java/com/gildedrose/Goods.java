@@ -36,6 +36,8 @@ public class Goods {
             updateSulfurasInfo();
         } else if (isAgedBrie()) {
             updateAgedBrieInfo();
+        } else if (isBackstage()) {
+            updateBackstageInfo();
         } else {
             updateQuality();
             decreaseSellIn();
@@ -44,11 +46,11 @@ public class Goods {
 
     }
 
-    public void updateSulfurasInfo() {
+    private void updateSulfurasInfo() {
 
     }
 
-    public void updateAgedBrieInfo() {
+    private void updateAgedBrieInfo() {
         if (this.quality < 50) {
             this.quality = this.quality + 1;
         }
@@ -58,6 +60,25 @@ public class Goods {
         if (this.quality < 50) {
             this.quality = this.quality + 1;
         }
+    }
+
+    private void updateBackstageInfo() {
+        if (this.quality < 50) {
+            this.quality = this.quality + 1;
+
+            if (this.sell_in < 11 && this.quality < 50) {
+                this.quality = this.quality + 1;
+            }
+
+            if (this.sell_in < 6 && this.quality < 50) {
+                this.quality = this.quality + 1;
+            }
+
+        }
+        decreaseSellIn();
+        if (this.sell_in >= 0)
+            return;
+        this.quality = 0;
     }
 
     private void updateQuality() {
