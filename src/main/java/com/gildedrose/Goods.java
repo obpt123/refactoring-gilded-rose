@@ -19,7 +19,7 @@ public class Goods {
         return this.name + ", " + this.sell_in + ", " + this.quality;
     }
 
-    public void updateItemQuality() {
+    public void updateInfo() {
         if (!this.name.equals("Aged Brie")
                 && !this.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (this.quality > 0) {
