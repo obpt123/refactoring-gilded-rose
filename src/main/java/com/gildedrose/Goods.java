@@ -49,16 +49,12 @@ public class Goods {
                 this.quality = this.quality + 1;
 
                 if (isBackstage()) {
-                    if (this.sell_in < 11) {
-                        if (this.quality < 50) {
-                            this.quality = this.quality + 1;
-                        }
+                    if (this.sell_in < 11 && this.quality < 50) {
+                        this.quality = this.quality + 1;
                     }
 
-                    if (this.sell_in < 6) {
-                        if (this.quality < 50) {
-                            this.quality = this.quality + 1;
-                        }
+                    if (this.sell_in < 6 && this.quality < 50) {
+                        this.quality = this.quality + 1;
                     }
                 }
             }
@@ -70,15 +66,19 @@ public class Goods {
             this.sell_in = this.sell_in - 1;
         }
     }
-    private boolean isAgedBrie(){
+
+    private boolean isAgedBrie() {
         return this.name.equals("Aged Brie");
     }
-    private boolean isBackstage(){
+
+    private boolean isBackstage() {
         return this.name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
-    private boolean isSulfuras(){
-       return this.name.equals("Sulfuras, Hand of Ragnaros"); 
+
+    private boolean isSulfuras() {
+        return this.name.equals("Sulfuras, Hand of Ragnaros");
     }
+
     private void reUpdateQualityWhenSellInLessThanZero() {
         if (this.sell_in >= 0)
             return;
