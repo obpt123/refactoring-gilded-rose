@@ -1,7 +1,9 @@
 package com.gildedrose;
 
 public class Goods {
-
+    private final static String AGEDBRIE_NAME = "Aged Brie";
+    private final static String BACKSTAGE_NAME = "Backstage passes to a TAFKAL80ETC concert";
+    private final static String SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
     private final String name;
 
     private int sell_in;
@@ -32,14 +34,19 @@ public class Goods {
     }
 
     public void updateInfo() {
-        if (isSulfuras()) {
-            updateSulfurasInfo();
-        } else if (isAgedBrie()) {
-            updateAgedBrieInfo();
-        } else if (isBackstage()) {
-            updateBackstageInfo();
-        } else {
-            updateOthers();
+        switch (this.name) {
+            case SULFURAS_NAME:
+                updateSulfurasInfo();
+                break;
+            case AGEDBRIE_NAME:
+                updateAgedBrieInfo();
+                break;
+            case BACKSTAGE_NAME:
+                updateBackstageInfo();
+                break;
+            default:
+                updateOthers();
+                break;
         }
     }
 
@@ -84,17 +91,4 @@ public class Goods {
             this.quality = this.quality - 1;
         }
     }
-
-    private boolean isAgedBrie() {
-        return this.name.equals("Aged Brie");
-    }
-
-    private boolean isBackstage() {
-        return this.name.equals("Backstage passes to a TAFKAL80ETC concert");
-    }
-
-    private boolean isSulfuras() {
-        return this.name.equals("Sulfuras, Hand of Ragnaros");
-    }
-
 }
