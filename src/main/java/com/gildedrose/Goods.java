@@ -38,9 +38,9 @@ public class Goods {
     }
 
     private void updateQuality() {
-        if (!this.name.equals("Aged Brie") && !this.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+        if (!isAgedBrie() && !isBackstage()) {
             if (this.quality > 0) {
-                if (!this.name.equals("Sulfuras, Hand of Ragnaros")) {
+                if (!isSulfuras()) {
                     this.quality = this.quality - 1;
                 }
             }
@@ -48,7 +48,7 @@ public class Goods {
             if (this.quality < 50) {
                 this.quality = this.quality + 1;
 
-                if (this.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (isBackstage()) {
                     if (this.sell_in < 11) {
                         if (this.quality < 50) {
                             this.quality = this.quality + 1;
@@ -66,17 +66,25 @@ public class Goods {
     }
 
     private void decreaseSellIn() {
-        if (!this.name.equals("Sulfuras, Hand of Ragnaros")) {
+        if (!isSulfuras()) {
             this.sell_in = this.sell_in - 1;
         }
     }
-
+    private boolean isAgedBrie(){
+        return this.name.equals("Aged Brie");
+    }
+    private boolean isBackstage(){
+        return this.name.equals("Backstage passes to a TAFKAL80ETC concert");
+    }
+    private boolean isSulfuras(){
+       return this.name.equals("Sulfuras, Hand of Ragnaros"); 
+    }
     private void reUpdateQualityWhenSellInLessThanZero() {
         if (this.sell_in >= 0)
             return;
-        if (!this.name.equals("Aged Brie")) {
-            if (!this.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (!this.name.equals("Sulfuras, Hand of Ragnaros")) {
+        if (!isAgedBrie()) {
+            if (!isBackstage()) {
+                if (!isSulfuras()) {
                     if (this.quality > 0) {
                         this.quality = this.quality - 1;
                     }
