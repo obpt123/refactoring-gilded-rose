@@ -82,23 +82,8 @@ public class Goods {
     }
 
     private void updateQuality() {
-        if (!isBackstage()) {
-            if (this.quality > 0) {
-                this.quality = this.quality - 1;
-            }
-        } else {
-            if (this.quality < 50) {
-                this.quality = this.quality + 1;
-
-                if (this.sell_in < 11 && this.quality < 50) {
-                    this.quality = this.quality + 1;
-                }
-
-                if (this.sell_in < 6 && this.quality < 50) {
-                    this.quality = this.quality + 1;
-                }
-
-            }
+        if (this.quality > 0) {
+            this.quality = this.quality - 1;
         }
     }
 
@@ -121,14 +106,8 @@ public class Goods {
     private void reUpdateQualityWhenSellInLessThanZero() {
         if (this.sell_in >= 0)
             return;
-
-        if (!isBackstage()) {
-            if (this.quality > 0) {
-                this.quality = this.quality - 1;
-            }
-        } else {
-            this.quality = 0;
+        if (this.quality > 0) {
+            this.quality = this.quality - 1;
         }
-
     }
 }
