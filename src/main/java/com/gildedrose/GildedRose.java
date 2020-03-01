@@ -1,15 +1,15 @@
 package com.gildedrose;
 
 class GildedRose {
-    Item[] items;
+    Goods[] goodsItems;
 
-    public GildedRose(Item[] items) {
-        this.items = items;
+    public GildedRose(Goods[] items) {
+        this.goodsItems = items;
     }
 
     public void update_quality() {
-        for (int i = 0; i < items.length; i++) {
-            items[i].updateItemQuality();
+        for (int i = 0; i < goodsItems.length; i++) {
+            goodsItems[i].updateItemQuality();
         }
     }
 
