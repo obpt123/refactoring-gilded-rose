@@ -54,39 +54,36 @@ public class Goods {
     }
 
     private void updateAgedBrieInfo() {
+        this.sell_in = this.sell_in - 1;
         if (this.quality < 50) {
             this.quality = this.quality + 1;
         }
-        this.sell_in = this.sell_in - 1;
         if (this.sell_in < 0 && this.quality < 50) {
             this.quality = this.quality + 1;
         }
     }
 
     private void updateBackstageInfo() {
+        this.sell_in = this.sell_in - 1;
         if (this.quality < 50) {
             this.quality = this.quality + 1;
-
-            if (this.sell_in < 11 && this.quality < 50) {
+            if (this.sell_in < 10 && this.quality < 50) {
                 this.quality = this.quality + 1;
             }
-
-            if (this.sell_in < 6 && this.quality < 50) {
+            if (this.sell_in < 5 && this.quality < 50) {
                 this.quality = this.quality + 1;
             }
-
         }
-        this.sell_in = this.sell_in - 1;
         if (this.sell_in < 0) {
             this.quality = 0;
         }
     }
 
     private void updateOthers() {
+        this.sell_in = this.sell_in - 1;
         if (this.quality > 0) {
             this.quality = this.quality - 1;
         }
-        this.sell_in = this.sell_in - 1;
         if (this.sell_in < 0 && this.quality > 0) {
             this.quality = this.quality - 1;
         }
