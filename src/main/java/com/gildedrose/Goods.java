@@ -35,18 +35,18 @@ public class Goods {
 
     public void updateInfo() {
         switch (this.name) {
-            case SULFURAS_NAME:
-                updateSulfurasInfo();
-                break;
-            case AGEDBRIE_NAME:
-                updateAgedBrieInfo();
-                break;
-            case BACKSTAGE_NAME:
-                updateBackstageInfo();
-                break;
-            default:
-                updateOthers();
-                break;
+        case SULFURAS_NAME:
+            updateSulfurasInfo();
+            break;
+        case AGEDBRIE_NAME:
+            updateAgedBrieInfo();
+            break;
+        case BACKSTAGE_NAME:
+            updateBackstageInfo();
+            break;
+        default:
+            updateOthers();
+            break;
         }
     }
 
@@ -55,37 +55,39 @@ public class Goods {
 
     private void updateAgedBrieInfo() {
         this.sell_in = this.sell_in - 1;
-        if (this.quality < 50) {
-            this.quality = this.quality + 1;
-        }
-        if (this.sell_in < 0 && this.quality < 50) {
-            this.quality = this.quality + 1;
-        }
+        this.increaseQualityIf(quality < 50);
+        this.increaseQualityIf(sell_in < 0 && quality < 50);
     }
 
     private void updateBackstageInfo() {
         this.sell_in = this.sell_in - 1;
-        if (this.quality < 50) {
-            this.quality = this.quality + 1;
-            if (this.sell_in < 10 && this.quality < 50) {
-                this.quality = this.quality + 1;
-            }
-            if (this.sell_in < 5 && this.quality < 50) {
-                this.quality = this.quality + 1;
-            }
-        }
-        if (this.sell_in < 0) {
-            this.quality = 0;
-        }
+        this.increaseQualityIf(quality < 50);
+        this.increaseQualityIf(sell_in < 10 && quality < 50);
+        this.increaseQualityIf(sell_in < 5 && quality < 50);
+        this.resetQualityIf(sell_in<0);
     }
 
     private void updateOthers() {
         this.sell_in = this.sell_in - 1;
-        if (this.quality > 0) {
-            this.quality = this.quality - 1;
+        this.decreaseQualityIf(quality > 0);
+        this.decreaseQualityIf(sell_in < 0 && quality > 0);
+    }
+
+    private void increaseQualityIf(boolean condition) {
+        if (condition) {
+            this.quality++;
         }
-        if (this.sell_in < 0 && this.quality > 0) {
-            this.quality = this.quality - 1;
+    }
+
+    private void decreaseQualityIf(boolean condition) {
+        if (condition) {
+            this.quality--;
+        }
+    }
+
+    private void resetQualityIf(boolean condition) {
+        if (condition) {
+            this.quality = 0;
         }
     }
 }
