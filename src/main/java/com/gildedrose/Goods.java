@@ -35,21 +35,10 @@ public class Goods {
 
     public void updateInfo() {
         switch (this.name) {
-        case BACKSTAGE_NAME:
-            updateBackstageInfo();
-            break;
         default:
             updateOthers();
             break;
         }
-    }
-
-    private void updateBackstageInfo() {
-        this.decreaseSellIn();
-        this.increaseQualityIf(quality < 50);
-        this.increaseQualityIf(sell_in < 10 && quality < 50);
-        this.increaseQualityIf(sell_in < 5 && quality < 50);
-        this.resetQualityIf(sell_in < 0);
     }
 
     private void updateOthers() {
