@@ -35,9 +35,6 @@ public class Goods {
 
     public void updateInfo() {
         switch (this.name) {
-        case SULFURAS_NAME:
-            updateSulfurasInfo();
-            break;
         case BACKSTAGE_NAME:
             updateBackstageInfo();
             break;
@@ -46,10 +43,6 @@ public class Goods {
             break;
         }
     }
-
-    private void updateSulfurasInfo() {
-    }
-
 
     private void updateBackstageInfo() {
         this.decreaseSellIn();

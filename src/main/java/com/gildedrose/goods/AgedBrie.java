@@ -3,9 +3,9 @@ package com.gildedrose.goods;
 import com.gildedrose.Goods;
 
 public class AgedBrie extends Goods {
-    public final static String AGEDBRIE_NAME = "Aged Brie";
+    public final static String NAME = "Aged Brie";
     public AgedBrie(int sell_in, int quality) {
-        super(AGEDBRIE_NAME, sell_in, quality);
+        super(NAME, sell_in, quality);
     }
     @Override
     public void updateInfo() {
