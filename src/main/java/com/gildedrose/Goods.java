@@ -6,9 +6,9 @@ public class Goods {
     private final static String SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
     private final String name;
 
-    private int sell_in;
+    protected int sell_in;
 
-    private int quality;
+    protected int quality;
 
     public Goods(final String name, final int sell_in, final int quality) {
         this.name = name;
@@ -38,9 +38,6 @@ public class Goods {
         case SULFURAS_NAME:
             updateSulfurasInfo();
             break;
-        case AGEDBRIE_NAME:
-            updateAgedBrieInfo();
-            break;
         case BACKSTAGE_NAME:
             updateBackstageInfo();
             break;
@@ -53,39 +50,38 @@ public class Goods {
     private void updateSulfurasInfo() {
     }
 
-    private void updateAgedBrieInfo() {
-        this.sell_in = this.sell_in - 1;
-        this.increaseQualityIf(quality < 50);
-        this.increaseQualityIf(sell_in < 0 && quality < 50);
-    }
 
     private void updateBackstageInfo() {
-        this.sell_in = this.sell_in - 1;
+        this.decreaseSellIn();
         this.increaseQualityIf(quality < 50);
         this.increaseQualityIf(sell_in < 10 && quality < 50);
         this.increaseQualityIf(sell_in < 5 && quality < 50);
-        this.resetQualityIf(sell_in<0);
+        this.resetQualityIf(sell_in < 0);
     }
 
     private void updateOthers() {
-        this.sell_in = this.sell_in - 1;
+        this.decreaseSellIn();
         this.decreaseQualityIf(quality > 0);
         this.decreaseQualityIf(sell_in < 0 && quality > 0);
     }
 
-    private void increaseQualityIf(boolean condition) {
+    protected void decreaseSellIn() {
+        this.sell_in--;
+    }
+
+    protected void increaseQualityIf(boolean condition) {
         if (condition) {
             this.quality++;
         }
     }
 
-    private void decreaseQualityIf(boolean condition) {
+    protected void decreaseQualityIf(boolean condition) {
         if (condition) {
             this.quality--;
         }
     }
 
-    private void resetQualityIf(boolean condition) {
+    protected void resetQualityIf(boolean condition) {
         if (condition) {
             this.quality = 0;
         }

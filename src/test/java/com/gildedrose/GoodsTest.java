@@ -124,7 +124,7 @@ public class GoodsTest {
 
     @Test
     public void shouldGetExpectedValueWhenUpdateInfoWithParams() {
-        Goods goods = new Goods(this.inputName, this.inputSellIn, this.inputQuality);
+        Goods goods = GoodsFactory.create(this.inputName, this.inputSellIn, this.inputQuality);
         goods.updateInfo();
         assertEquals("Name", this.inputName, goods.getName());
         assertEquals("SellIn", this.expectedSellIn, goods.getSellIn());
