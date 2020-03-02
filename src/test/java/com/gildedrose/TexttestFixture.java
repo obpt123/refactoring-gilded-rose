@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import com.gildedrose.goods.Goods;
+import com.gildedrose.GoodsFactory;
+
 public class TexttestFixture {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");

@@ -1,9 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.goods;
 
 public class Goods {
-    private final static String AGEDBRIE_NAME = "Aged Brie";
-    private final static String BACKSTAGE_NAME = "Backstage passes to a TAFKAL80ETC concert";
-    private final static String SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
     private final String name;
 
     protected int sell_in;
@@ -34,14 +31,6 @@ public class Goods {
     }
 
     public void updateInfo() {
-        switch (this.name) {
-        default:
-            updateOthers();
-            break;
-        }
-    }
-
-    private void updateOthers() {
         this.decreaseSellIn();
         this.decreaseQualityIf(quality > 0);
         this.decreaseQualityIf(sell_in < 0 && quality > 0);

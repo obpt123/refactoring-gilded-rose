@@ -1,8 +1,9 @@
 package com.gildedrose;
 
-
 import org.junit.Test;
 import static org.mockito.Mockito.*;
+
+import com.gildedrose.goods.Goods;
 
 public class GildedRoseTest {
 

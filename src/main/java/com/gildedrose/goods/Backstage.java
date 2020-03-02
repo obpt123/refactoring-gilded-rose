@@ -1,6 +1,5 @@
 package com.gildedrose.goods;
 
-import com.gildedrose.Goods;
 
 public class Backstage extends Goods {
     public final static String NAME = "Backstage passes to a TAFKAL80ETC concert";
