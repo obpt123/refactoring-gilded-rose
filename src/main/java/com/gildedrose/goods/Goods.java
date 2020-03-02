@@ -3,13 +3,13 @@ package com.gildedrose.goods;
 public class Goods {
     private final String name;
 
-    protected int sell_in;
+    protected int sellIn;
 
     protected int quality;
 
-    public Goods(final String name, final int sell_in, final int quality) {
+    public Goods(final String name, final int sellIn, final int quality) {
         this.name = name;
-        this.sell_in = sell_in;
+        this.sellIn = sellIn;
         this.quality = quality;
     }
 
@@ -18,7 +18,7 @@ public class Goods {
     }
 
     public int getSellIn() {
-        return this.sell_in;
+        return this.sellIn;
     }
 
     public int getQuality() {
@@ -27,17 +27,17 @@ public class Goods {
 
     @Override
     public String toString() {
-        return this.name + ", " + this.sell_in + ", " + this.quality;
+        return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 
     public void updateInfo() {
         this.decreaseSellIn();
         this.decreaseQualityIf(quality > 0);
-        this.decreaseQualityIf(sell_in < 0 && quality > 0);
+        this.decreaseQualityIf(sellIn < 0 && quality > 0);
     }
 
     protected void decreaseSellIn() {
-        this.sell_in--;
+        this.sellIn--;
     }
 
     protected void increaseQualityIf(boolean condition) {
